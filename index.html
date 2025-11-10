@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Raja Mahesh - Senior Consultant Nephrologist | Apollo Hospitals Chennai</title>
+    <meta name="description" content="Dr. Raja Mahesh, Senior Consultant Nephrologist with 32+ years of experience at Apollo Hospitals, Chennai. Expert in Chronic Kidney Disease, Dialysis, Kidney Transplant & more.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --kidney-red: #C84C4A;
+            --kidney-red-dark: #A83D3B;
+            --kidney-red-light: #E74C3C;
+            --light-pink: #FFE5E5;
+            --cream: #FFF5E5;
+            --light-blue: #E8F5FF;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --dark-text: #2C3E50;
+            --soft-teal: #52C7B8;
+            --mint-green: #A8E6CF;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            background-color: var(--light-gray);
+            overflow-x: hidden;
+        }
+
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--light-pink) 0%, var(--cream) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .kidney-loader {
+            position: relative;
+            width: 120px;
+            height: 160px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .kidney-shape {
+            width: 100%;
+            height: 100%;
+            background: var(--kidney-red);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            box-shadow: 0 0 40px rgba(200, 76, 74, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.2);
+            animation: glow 1.5s ease-in-out infinite;
+        }
+
+        .kidney-shape::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -15px;
+            width: 35px;
+            height: 35px;
+            background: var(--kidney-red);
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .kidney-shape::after {
+            content: '';
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 50%;
+            height: 50%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 40px rgba(200, 76, 74, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(200, 76, 74, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        .loading-text {
+            margin-top: 30px;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--kidney-red);
+            letter-spacing: 2px;
+            animation: fadeInOut 1.5s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Main Content */
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        #main-content.visible {
+            opacity: 1;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: box-shadow 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+
+        .header-brand span {
+            color: var(--kidney-red);
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--kidney-red);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(200, 76, 74, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--kidney-red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(200, 76, 74, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--kidney-red);
+            border: 2px solid var(--kidney-red);
+        }
+
+        .btn-secondary:hover {
+            background: var(--kidney-red);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--light-pink) 0%, var(--cream) 50%, var(--light-blue) 100%);
+            padding: 80px 24px;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            animation: fadeInLeft 1s ease;
+        }
+
+        .doctor-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 6px solid var(--kidney-red);
+            box-shadow: var(--shadow-lg);
+            object-fit: cover;
+            animation: borderPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes borderPulse {
+            0%, 100% {
+                border-color: var(--kidney-red);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16), 0 0 0 0 rgba(200, 76, 74, 0.4);
+            }
+            50% {
+                border-color: var(--kidney-red-light);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16), 0 0 0 20px rgba(200, 76, 74, 0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content {
+            animation: fadeInRight 1s ease;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--dark-text);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .hero-content .title {
+            font-size: 24px;
+            color: var(--kidney-red);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .hero-content .hospital {
+            font-size: 18px;
+            color: var(--dark-text);
+            margin-bottom: 24px;
+            opacity: 0.8;
+        }
+
+        .tagline {
+            font-size: 20px;
+            color: var(--dark-text);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .stats-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .badge {
+            background: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            box-shadow: var(--shadow-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .badge-icon {
+            font-size: 18px;
+        }
+
+        /* Achievement Banner */
+        .achievement-banner {
+            background: linear-gradient(90deg, var(--light-pink) 0%, var(--cream) 100%);
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        .achievement-banner-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .achievement-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .achievement-banner h2 {
+            font-size: 28px;
+            color: var(--kidney-red);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .achievement-banner p {
+            font-size: 18px;
+            color: var(--dark-text);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 24px;
+            background: var(--white);
+        }
+
+        .section:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .section-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-align: center;
+            margin-bottom: 48px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--kidney-red);
+            border-radius: 2px;
+        }
+
+        /* Education Grid */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card.pink {
+            background: var(--light-pink);
+        }
+
+        .card.cream {
+            background: var(--cream);
+        }
+
+        .card.blue {
+            background: var(--light-blue);
+        }
+
+        .card h3 {
+            font-size: 24px;
+            color: var(--kidney-red);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+
+        .card .year {
+            font-size: 14px;
+            color: var(--kidney-red);
+            font-weight: 600;
+        }
+
+        /* Achievements List */
+        .achievements-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .achievement-item {
+            background: linear-gradient(135deg, var(--soft-teal) 0%, var(--mint-green) 100%);
+            padding: 24px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .achievement-item .icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .achievement-item p {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin: 0;
+        }
+
+        /* Specializations Grid */
+        .specializations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .specialization-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .specialization-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--kidney-red);
+        }
+
+        .specialization-card .icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .specialization-card p {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin: 0;
+        }
+
+        /* Locations Grid */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+        }
+
+        .location-card {
+            background: linear-gradient(135deg, var(--light-pink) 0%, var(--cream) 100%);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .location-card .icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .location-card h3 {
+            font-size: 24px;
+            color: var(--kidney-red);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .location-card .address {
+            font-size: 16px;
+            color: var(--dark-text);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .location-card .timings {
+            background: var(--white);
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: var(--kidney-red);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* Landmark Case */
+        .landmark-case {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-pink) 100%);
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landmark-case::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 120px;
+            color: var(--kidney-red);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .landmark-case h3 {
+            font-size: 28px;
+            color: var(--kidney-red);
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .landmark-case p {
+            font-size: 18px;
+            color: var(--dark-text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .landmark-case .quote {
+            font-style: italic;
+            font-weight: 600;
+            color: var(--kidney-red);
+            margin-top: 24px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            border-left: 4px solid var(--kidney-red);
+        }
+
+        /* Testimonials Grid */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--kidney-red);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .testimonial-card .stars {
+            color: #FFD700;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-card .quote {
+            font-size: 16px;
+            color: var(--dark-text);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-card .author {
+            font-weight: 700;
+            color: var(--kidney-red);
+            font-size: 18px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--kidney-red) 0%, var(--kidney-red-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 24px;
+        }
+
+        .cta-section h2 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+        }
+
+        .btn-light {
+            background: var(--white);
+            color: var(--kidney-red);
+            font-size: 18px;
+            padding: 16px 40px;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-light:hover {
+            background: var(--light-gray);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: var(--white);
+            padding: 48px 24px 24px;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--kidney-red-light);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom .crafted {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-bottom .heart {
+            color: var(--kidney-red-light);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-brand {
+                font-size: 16px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .doctor-photo {
+                width: 220px;
+                height: 220px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-content .title {
+                font-size: 20px;
+            }
+
+            .tagline {
+                font-size: 18px;
+            }
+
+            .stats-badges {
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .education-grid,
+            .locations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .specializations-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="kidney-loader">
+            <div class="kidney-shape"></div>
+        </div>
+        <div class="loading-text">Loading...</div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Header -->
+        <header id="header">
+            <div class="header-container">
+                <div class="header-brand">
+                    Dr. Raja Mahesh <span>|</span> Nephrologist
+                </div>
+                <a href="https://www.apollo247.com/doctors/dr-raja-mahesh-abc51ba4-6e8c-4191-a04e-e4f6772a321b" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    Book Appointment
+                </a>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-container">
+                <div class="hero-image">
+                    <img src="https://images.apollo247.in/doctors/abc51ba4-6e8c-4191-a04e-e4f6772a321b-1734690687099.png?tr=w-150,c-at_max,f-auto,q-80,dpr-2" alt="Dr. Raja Mahesh - Senior Consultant Nephrologist" class="doctor-photo">
+                </div>
+                <div class="hero-content">
+                    <h1>Dr. Raja Mahesh</h1>
+                    <div class="title">Senior Consultant Nephrologist</div>
+                    <div class="hospital">Apollo Hospitals, Chennai</div>
+                    <p class="tagline">Caring for Your Kidney Health with 32+ Years of Excellence</p>
+                    <div class="stats-badges">
+                        <div class="badge">
+                            <span class="badge-icon">⏰</span>
+                            <span>32+ Years Experience</span>
+                        </div>
+                        <div class="badge">
+                            <span class="badge-icon">👍</span>
+                            <span>96% Patient Recommendation</span>
+                        </div>
+                        <div class="badge">
+                            <span class="badge-icon">👥</span>
+                            <span>200+ Patients Treated</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievement Banner -->
+        <section class="achievement-banner">
+            <div class="achievement-banner-content">
+                <div class="achievement-icon">🏆</div>
+                <h2>Pioneer Achievement: A Medical First in India</h2>
+                <p>First in India to manage successful pregnancy in dialysis patient with SLE. A 26-year-old woman with renal failure on haemodialysis for 2 years delivered a healthy 2.1 kg baby after being on dialysis 6 days a week throughout pregnancy.</p>
+                <a href="https://www.newindianexpress.com/cities/chennai/2010/Jul/28/haemodialysis-patient-gives-birth-to-baby-173591.html" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Read Full Article</a>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section" id="education">
+            <div class="section-container fade-in">
+                <h2 class="section-title">Education &amp; Training</h2>
+                <div class="education-grid">
+                    <div class="card pink">
+                        <h3>MBBS</h3>
+                        <p>Madras University, Chennai</p>
+                        <div class="year">1993</div>
+                    </div>
+                    <div class="card cream">
+                        <h3>MRCP (UK)</h3>
+                        <p>Royal Colleges of Physicians, London</p>
+                        <div class="year">1998</div>
+                    </div>
+                </div>
+
+                <h3 style="font-size: 28px; color: var(--kidney-red); margin-bottom: 24px; text-align: center;">Notable Achievements</h3>
+                <div class="achievements-list">
+                    <div class="achievement-item">
+                        <div class="icon">🎯</div>
+                        <p>Ranked 74th out of 70,000 in All India PG Exam</p>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="icon">🥇</div>
+                        <p>Gold Medals in Medicine &amp; Surgery</p>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="icon">🏅</div>
+                        <p>University Medals in Pathology and Anatomy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specializations Section -->
+        <section class="section" id="specializations">
+            <div class="section-container fade-in">
+                <h2 class="section-title">Areas of Expertise</h2>
+                <div class="specializations-grid">
+                    <div class="specialization-card">
+                        <span class="icon">🫘</span>
+                        <p>Chronic Kidney Disease</p>
+                    </div>
+                    <div class="specialization-card">
+                        <span class="icon">💉</span>
+                        <p>Dialysis</p>
+                    </div>
+                    <div class="specialization-card">
+                        <span class="icon">🏥</span>
+                        <p>Kidney Transplant</p>
+                    </div>
+                    <div class="specialization-card">
+                        <span class="icon">⚡</span>
+                        <p>Acute Kidney Injury</p>
+                    </div>
+                    <div class="specialization-card">
+                        <span class="icon">💎</span>
+                        <p>Kidney Stones</p>
+                    </div>
+                    <div class="specialization-card">
+                        <span class="icon">🔬</span>
+                        <p>Nephrotic Syndrome</p>
+                    </div>
+                    <div class="specialization-card">
+                        <span class="icon">🧬</span>
+                        <p>Polycystic Kidney Disease</p>
+                    </div>
+                    <div class="specialization-card">
+                        <span class="icon">🦠</span>
+                        <p>UTI</p>
+                    </div>
+                    <div class="specialization-card">
+                        <span class="icon">❤️</span>
+                        <p>Hypertension</p>
+                    </div>
+                    <div class="specialization-card">
+                        <span class="icon">🏨</span>
+                        <p>Nephrology ICU Care</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Locations Section -->
+        <section class="section" id="locations">
+            <div class="section-container fade-in">
+                <h2 class="section-title">Visit Dr. Raja Mahesh</h2>
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <span class="icon">🏥</span>
+                        <h3>Apollo Hospitals, Greams Road</h3>
+                        <p class="address">21 Greams Lane, Off Greams Road, Chennai - 600006</p>
+                        <div class="timings">⏰ Mon–Sat: 12:00 PM – 2:45 PM</div>
+                        <br>
+                        <a href="https://www.google.com/maps/search/Apollo+Hospitals+Greams+Road+Chennai" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">📍 View on Google Maps</a>
+                    </div>
+                    <div class="location-card">
+                        <span class="icon">⚕️</span>
+                        <h3>Apollo First Med, Kilpauk</h3>
+                        <p class="address">154, Poonamallee High Road, Kilpauk, Chennai - 600010</p>
+                        <div class="timings">⏰ Mon–Sat: 3:00 PM – 5:30 PM</div>
+                        <br>
+                        <a href="https://www.google.com/maps/search/Apollo+First+Med+Kilpauk+Chennai" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">📍 View on Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Landmark Case Section -->
+        <section class="section" id="landmark">
+            <div class="section-container fade-in">
+                <div class="landmark-case">
+                    <h3>A Medical First in India</h3>
+                    <p>Dr. Raja Mahesh managed a groundbreaking case of a 26-year-old woman from Tiruvannamalai with renal failure and SLE (Systemic Lupus Erythematosus) who was on haemodialysis for 2 years. Against all odds, she delivered a healthy baby weighing 2.1 kg after being on dialysis 6 days a week throughout her pregnancy.</p>
+                    <p>This remarkable achievement demonstrated that with expert medical care, advanced nephrology techniques, and unwavering dedication, even the most challenging cases can have successful outcomes.</p>
+                    <div class="quote">
+                        "With less than 10% kidney function, this case demonstrated that compassionate care and medical excellence can achieve the impossible."
+                    </div>
+                    <br>
+                    <a href="https://www.newindianexpress.com/cities/chennai/2010/Jul/28/haemodialysis-patient-gives-birth-to-baby-173591.html" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Read the Full Story</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section" id="testimonials">
+            <div class="section-container fade-in">
+                <h2 class="section-title">Kind Words from Patients</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="quote">"Dr. Raja Mahesh's expertise and caring approach gave me hope during my kidney treatment journey. His attention to detail is remarkable."</p>
+                        <div class="author">— S.K.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="quote">"Exceptional care and attention to detail. I'm grateful for his guidance through my dialysis. He truly cares about his patients."</p>
+                        <div class="author">— M.R.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p class="quote">"A compassionate doctor who truly listens. His treatment plan changed my life. I highly recommend him."</p>
+                        <div class="author">— A.P.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section" id="cta">
+            <div class="section-container">
+                <h2>Take the First Step Towards Better Kidney Health</h2>
+                <p>Book your consultation with Dr. Raja Mahesh today</p>
+                <a href="https://www.apollo247.com/doctors/dr-raja-mahesh-abc51ba4-6e8c-4191-a04e-e4f6772a321b" class="btn btn-light" target="_blank" rel="noopener noreferrer">Book Appointment Now</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="footer-section">
+                        <h4>Dr. Raja Mahesh</h4>
+                        <p>Senior Consultant Nephrologist</p>
+                        <p>MBBS, MRCP (UK)</p>
+                        <p>32+ Years of Excellence in Nephrology</p>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <div class="footer-links">
+                            <a href="#hero" class="internal-link">About</a>
+                            <a href="#specializations" class="internal-link">Specializations</a>
+                            <a href="#locations" class="internal-link">Locations</a>
+                            <a href="https://www.apollo247.com/doctors/dr-raja-mahesh-abc51ba4-6e8c-4191-a04e-e4f6772a321b" target="_blank" rel="noopener noreferrer">Book Appointment</a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Hospital</h4>
+                        <p><a href="https://www.apollo247.com/" target="_blank" rel="noopener noreferrer" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">Apollo Hospitals, Chennai</a></p>
+                        <p>Greams Road &amp; Kilpauk</p>
+                        <p>Mon–Sat: By Appointment</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <div>© 2025 Dr. Raja Mahesh. All rights reserved.</div>
+                    <div class="crafted">
+                        <span>Crafted by one of his patients</span>
+                        <span class="heart">❤️</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                const mainContent = document.getElementById('main-content');
+                
+                preloader.classList.add('hidden');
+                mainContent.classList.add('visible');
+                
+                // Remove preloader from DOM after transition
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 800);
+            }, 2500);
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Additional handler for internal links with class
+        document.querySelectorAll('.internal-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
